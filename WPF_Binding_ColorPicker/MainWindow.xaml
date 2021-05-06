@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Binding_ColorPicker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="300" Width="800" DataContext="ColorPicker">
+        Title="MainWindow" Height="300" Width="800">
+    <!--DataContext="{Binding Path=ColorPicker}"-->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -72,7 +73,7 @@
         </Grid>
         <Grid Grid.Column="1">
             <Label 
-                x:Name="lb_Color" Background="{Binding Path=ColorUser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="20" BorderThickness="2" BorderBrush="Black"></Label>
+                x:Name="lb_Color" Background="{Binding Path=ColorUser, UpdateSourceTrigger=PropertyChanged}" Margin="20" BorderThickness="2" BorderBrush="Black"></Label>
         </Grid>
     </Grid>
 </Window>

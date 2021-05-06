@@ -45,14 +45,15 @@ namespace WPF_Binding_ColorPicker
 
         private SolidColorBrush color = new SolidColorBrush();       
 
-        public SolidColorBrush ColorUser
+        public Brush ColorUser
         {
-            get => color;
-            set
-            {
-                color = new SolidColorBrush(Color.FromRgb(Red, Green, Blue));
-                OnPropertyChanged();
-            }
+            get => (Brush)color;
+           
+            //set
+            //{
+            //    color = new SolidColorBrush(Color.FromRgb(Red, Green, Blue));
+            //    OnPropertyChanged();
+            //}
 
         }
 
