@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -11,58 +12,67 @@ namespace WPF_Binding_ColorPicker
 {
     public class ColorPicker : INotifyPropertyChanged
     {
-        private byte red = 0;
+        public AddColor AddColor { get; set; }
+        public ColorPicker()
+        {
+            AddColor = new AddColor(this);
+            //InkPod = new ObservableCollection<UColor>();
+            //red = 0;
+            //blue = 0;
+            //green = 0;
+            //color = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+        }
+
+        private byte red; 
         public byte Red
         {
             get => red;
             set
             {
                 red = value;
+                CastomColor = new SolidColorBrush(Color.FromRgb(Red, Green, Blue));
                 OnPropertyChanged();
             }
         }
-        private byte blue = 0;
+        private byte blue;
         public byte Blue
         {
             get => blue;
             set
             {
                 blue = value;
+                CastomColor = new SolidColorBrush(Color.FromRgb(Red, Green, Blue));
                 OnPropertyChanged();
             }
         }
-        private byte green = 0;
+        private byte green;
         public byte Green
         {
             get => green;
             set
             {
                 green = value;
+                CastomColor = new SolidColorBrush(Color.FromRgb(Red, Green, Blue));
                 OnPropertyChanged();
             }
 
         }
 
-        private SolidColorBrush color = new SolidColorBrush();       
+        private SolidColorBrush color;        
 
-        public Brush ColorUser
+        public Brush CastomColor
         {
             get => (Brush)color;
-           
-            //set
-            //{
-            //    color = new SolidColorBrush(Color.FromRgb(Red, Green, Blue));
-            //    OnPropertyChanged();
-            //}
+
+            set
+            {
+                color = (SolidColorBrush)value;
+                OnPropertyChanged();
+            }
 
         }
 
-        //public ColorPicker(byte red = 0, byte blue = 0, byte green = 0)
-        //{
-        //    Red = red;
-        //    Blue = blue;
-        //    Green = green;
-        //}
+        public ObservableCollection<UColor> InkPod { get; set; } = new ObservableCollection<UColor>();
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

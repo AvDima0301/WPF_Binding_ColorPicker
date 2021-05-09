@@ -23,9 +23,6 @@ namespace WPF_Binding_ColorPicker
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = cp;
         }
-
-        ColorPicker cp = new ColorPicker(); 
     }
 }
